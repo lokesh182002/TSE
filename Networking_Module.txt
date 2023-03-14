@@ -1,0 +1,540 @@
+
+22-09-2022
+Thursday.
+==========================================================================
+
+Intro to Networking:
+-----------------------
+
+digital service
+
+
+networking - end devices
+
+
+intermediatary devices -- routers switches hubs
+
+
+
+network media:
+
+wired,wifi(wireless fidelity)
+
+
+wired 
+------
+
+1.ethernet cables
+
+2.fiber optical cables
+
+
+ethernet - electrical signals ----- 100 meters
+
+fiber optic -- light signals ------> kms 
+
+
+port - connection
+
+cable ---> end device -- port
+
+rj45 -----> registered jack
+
+
+NIC -----> network interface
+
+ethernet interface 
+
+network adapter
+
+rj11--- telephone limes
+
+use to rj45 converters
+
+
+rj45 ----> cable
+
+
+
+to see the which interface you have i.e wired or wireless
+
+command
+------------
+ devmgmt.msc
+
+
+icpe --- mean its a wired 
+
+
+ethernet ----> electrical signals
+
+
+optical ------> light signals
+
+
+wifi -------> radio signals
+
+
+
+physical:
+----------
+how end devices connect to intermediatery devices?
+
+
+end ---> interface
+
+
+topology:
+-----------
+physically connecting intermediatary devices
+
+types:
+-------
+1. Bus
+2. star 
+3. extended star
+4. mesh
+
+
+Bus topology:
+----------------
+ Not in use.
+
+connecting in a line 
+
+disadvantges:
+------------------
+if one pc not sending the connection drops
+
+
+
+Star :
+----
+
+all end devices are connected to centralised devices:
+
+
+here centralised devices are hub or switch
+
+
+disadvantage:
+
+if centralised device failed all network goes down .
+
+
+it is also called as spof(single point of failure)
+
+
+
+
+
+Mesh:
+--------
+every device connected to itself.
+every device connected to one another device.
+
+
+if 10 switches are connected it will connect to all 10 switches itself.
+
+it will maintaice redundancy(back up)
+
+
+extended star:
+----------------
+
+one star connected to another star.
+
+
+
+physical networking:
+---------------------
+physically how they are connecting.
+
+like:
+
+wired or wireless 
+
+frequencies , speed etc.
+
+
+
+
+
+Logical networking:
+-----------------------
+it mainly about ip addresses.
+
+
+every interface has two addresses
+
+1. IP address ----> logical address  ----> we can change the ip addresss
+
+2. MAC address ----> physical address(it cant be modified)(hard coded)
+
+
+to see ip address: ---> ipconfig
+
+windows is a case insensitive.
+
+
+example:
+---------
+Wireless LAN adapter Wi-Fi:
+
+   Connection-specific DNS Suffix  . :
+   Link-local IPv6 Address . . . . . : fe80::19b4:e75a:1aa2:426e%13
+   IPv4 Address. . . . . . . . . . . : 10.16.48.43
+   Subnet Mask . . . . . . . . . . . : 255.255.254.0
+   Default Gateway . . . . . . . . . : 10.16.49.254
+
+
+command :
+-----------
+getmac
+
+description:
+--------------
+gives the mac address only
+
+
+
+
+command:
+------------
+ipconfig /all
+
+
+description:
+-------------
+
+it will give all addresses connected to inferace.
+like ip , mac etc.
+
+
+command:
+-------------
+ping <website name>
+
+description:
+--------------
+
+gives the ip address of that website.
+
+
+
+IP ADDRESSING:
+------------------
+
+two versions : 
+
+1. IPv4
+2. IPv6
+
+
+IPv4 :
+------
+10.16.48.90
+
+parts ----> 4
+
+everypart --->octate
+
+4 octates  ---> 8bits per octate
+
+eg:
+---
+1 0 10 10 bits
+
+32 bit ---> binary address.
+
+
+
+eg:
+
+00000000:00000000:00000000:00000000
+
+0.0.0.0
+
+
+eg-2:
+------
+
+11111111.11111111.11111111.11111111
+
+calculating for one octate:
+------------------------------
+
+1 	1	1	1	1	1 	1	1
+7	6	5	4	3	2	1	0
+128	64	32	16	8	4	2	1
+
+128+64+32+8+4+2+1 = 255
+
+255. 255.255.255
+
+minimum value =0
+ maximum value =255
+
+every octate lies in between 0 and 255.
+
+the octate will not take 256.
+
+
+these rules are provided by ---------------> IANA -----> (internet assigned numbers authority.)
+
+
+eg:
+
+10101010.11110000.01010101.10010011
+
+
+the ip address of above :
+
+170.240.85.147
+
+
+
+5 Classes 
+
+A  -----> 1-127                    network
+
+B ------>128-191                 unicasting 
+
+C-------->192-223
+
+
+
+
+
+D-------->224-239  ---------> multicasting ----> setup boxes
+
+E--------->240-255 ----------> R&D , testing
+
+
+first octate:(observing the first octate we can say the class)
+------------
+128.90.98.09 -------------> class B
+
+172.98.45.34 -------------->class B
+
+
+10.78.93.02  ---------------> class A
+
+
+193.32.98.44 ------------> class C
+
+
+
+Writing the classes:
+--------------------
+
+class -A       1-127
+
+N.H.H.H    -----(Rule by IANA)
+
+N ---> closed (fixed)
+
+H ---> open (changes)
+
+
+N ----> Network
+
+H ---->Host
+
+
+example:
+----------
+
+bilgates bavan ---------------> Network (which cannot be changed)
+
+room1
+ 
+room2    ------------------> Host
+.
+.
+.
+.room n
+
+
+
+
+1.0.0.0
+1.0.0.1
+1.0.0.2
+.
+.
+.
+.1.0.0.255
+
+
+1.0.1.0
+
+1.0.1.1
+
+1.0.1.2 ............................................1.0.1.255
+
+
+1.0.2.0 .................................................1.0.255.255
+
+First network:
+---------------
+
+range:
+-------
+
+1.0.0.0 -----------------------> 1.255.255.255
+
+
+No of hosts in a single network:
+-----------------------------------
+256*256*256
+16777216
+these many ip address can be in 1 network
+
+
+
+2.0.0.0 --------------------> 2.255.255.255       16777216
+
+.
+.
+.
+.
+127.0.0.0 ---------------------> 127.255.255.255   16777216
+
+
+for one class:
+---------------
+We have
+
+127*16777216
+
+==> 126*16777216
+        
+        2113929216(ip addresses)
+
+
+
+Network changes ----> No communication
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+23-09-2022
+Friday.
+==============================================================================
+
+
+switch:
+-------
+it sends packets in the same network.
+it doesnot know the concept of gateway.
+	
+
+IPv4 
+
+subnet mask:
+--------------
+
+
+B class:
+--------
+
+B class range (128-191)
+
+its rule by IANA:
+-----------------
+N.N.H.H
+
+
+two network octates
+two host octates
+
+128.0.0.0
+
+128.0.0.1 ..........................................128.0.0.255
+
+
+128.0.1.0 ---------------------->128.0.255.255
+
+
+different network:
+------------------
+
+128.1.0.0
+
+
+128.2.0.0
+
+128.3
+
+128.4
+.
+.
+.
+128.255
+
+129.0 - 129.255
+
+130.0 - 130 .255
+
+.
+.
+.
+191.0 - 191.255
+
+
+these are different networks.
+
+note:
+the first and second should not change.
+
+the last  network:(in class B)
+------------------
+
+191.255.0.0    191.255.255.255
+
+per network: 65536
+
+
+C - CLASS:
+-----------
+
+range--------->192-223
+
+rule:
+-----
+
+N.N.N.H
+
+
+192.0.0.0        ----    192.0.0.255    ------------> per network 256
+
+256 computers can be connected with one lan (in our general language)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
